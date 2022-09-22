@@ -1,0 +1,11 @@
+nav {
+    margin-bottom: 20px;
+    font-family: 'Andale Mono', monospace;
+    color: darkslategray;
+    font-weight: bold;
+}
+
+.carrito-logo {
+    width: 40px;
+    height: 40px;
+}

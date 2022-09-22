@@ -1,6 +1,6 @@
 import './App.css';
 import AvatarJsx from './components/AvatarJSX/AvatarJsx.js';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar.js';
 
 function App() {
   return (

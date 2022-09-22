@@ -4,7 +4,7 @@ const AvatarJsx = () => {
     const src = `https://randomuser.me/api/portraits/lego/2.jpg`
     return (                  // Puedo definir un styling sobre la misma línea usando {{}} (la 1°{} define que es un objetoJS y la 2°{} es el detalle de la propiedad)
         <picture style={{color: 'red'}}>
-            <img src = {src} alt='avatar'/>
+            <img src = {src} className='avatar' alt='avatar'/>
             Andres
         </picture>
     )
