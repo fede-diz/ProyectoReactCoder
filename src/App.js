@@ -1,12 +1,12 @@
 import './App.css';
-import AvatarJsx from './components/AvatarJSX/AvatarJsx.js';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Navbar from './components/Navbar/Navbar.js';
 
-function App() {
-  return (
+function App() {               // Dentro de las llaves {} de cada componente le paso propiedades con formato JavaScript: número, variable, 'un string', unaFuncion()
+  return (                     // [un, array], {un:x, objeto:y, literal:z}, etc
     <div className="App">
-        <Navbar />
-        <AvatarJsx />
+      <Navbar />
+      <ItemListContainer greeting={'BIENVENIDOS AL HIMALAYA'}/>
     </div>
   );
 }
