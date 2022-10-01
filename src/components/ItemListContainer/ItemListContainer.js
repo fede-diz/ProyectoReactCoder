@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getProducts } from "../../asyncMock";
 import ItemList from "../ItemList/ItemList";
+import Spinner from "../Spinner/Spinner";
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([])
@@ -16,14 +17,16 @@ const ItemListContainer = ({greeting}) => {
 
     if(loading) {
         return (
-            <h1>Loading...</h1>                 // Poner un loader redondito, queda más fachero (armarlo como componente en otra carpeta del explorerJS)
+            <div>
+                <h1>{greeting}</h1>
+                <Spinner />
+            </div>
         )
     }
 
     return (
         <div>
             <h1>{greeting}</h1>
-            <h2>Listado de Productos</h2>
             <ItemList products={products} />
         </div>
     )
