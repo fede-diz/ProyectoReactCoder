@@ -1,5 +1,42 @@
-.row {
-    display: grid;
+.CardItem {
+    width: 500px;
     margin: 0 auto;
-    padding: 80px;
+    font-size: 10px;
+}
+
+.ItemHeader {
+    display: flex;
+    justify-content: center;
+}
+
+.Info {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Button {
+    width: auto;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    flex: none;
+    display: flex;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.ItemImg {
+    height: 550px;
+    object-fit: cover;
+    object-position: center;
 }

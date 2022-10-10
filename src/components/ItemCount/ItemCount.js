@@ -1,30 +1,33 @@
 import { useState } from 'react';
+import './ItemCount.css'
 
-const ItemCount = ({ stock, initial, onAdd }) => {
-    const [count, setCount] = useState(0)
-
-    if (initial) {
-        initial = count
-    }
+const ItemCount = ({ stock = 0, initial = 1, onAdd }) => {
+    const [quantity, setQuantity] = useState(initial)
 
     const increment = () => {
-        if (count < stock) {
-            setCount(parseInt(count) + 1)
+        if (quantity < stock) {
+            setQuantity(quantity + 1)
         }
     }
     const decrement = () => {
-        if (count > 0) {
-            setCount(parseInt(count) - 1)
+        if (quantity > 1) {
+            setQuantity(quantity - 1)
         }
     }
 
     return (
-        <div id='counter' className="input-group mb-3">
-            <h3>Stock: {stock}</h3>
-            <button className="btn btn-outline-secondary" onClick={decrement}>-</button>
-            <input value={count} onChange={(e) => setCount(e.target.value)} />
-            <button className="btn btn-outline-secondary" onClick={increment}>+</button>
-            <button className="btn btn-outline-none" onClick={ stock!==0 ? onAdd : null}>Agregar al carrito</button>
+        <div id='counter'>
+            <div>
+                <h4>Stock: {stock}</h4>
+            </div>
+            <div className='Controls'>
+                <button className="Button" onClick={decrement}>-</button>
+                <h4 className="Number">{quantity}</h4>
+                <button className="Button" onClick={increment}>+</button>
+            </div>
+            <div className='Controls'>
+                <button className="Button" onClick={() => onAdd(quantity)}>Agregar al carrito</button>
+            </div>
         </div>
     )
 }

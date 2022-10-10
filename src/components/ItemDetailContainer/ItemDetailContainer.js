@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { getProductsById } from "../../asyncMock";
 import ItemDetail from "../ItemDetail/ItemDetail"
+import './ItemDetailContainer.css'
 import Spinner from "../Spinner/Spinner";
+import { useParams } from 'react-router-dom';      // useParams se usa para obtener parámetros de react-router-dom
 
-const ItemDetailContainer = ({greeting}) => {     // este greeting lo tiene que heredar desde APP.js 
-    const [products, setProducts] = useState([])
+const ItemDetailContainer = () => {
+    const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
 
+    const { productId } = useParams()           // Esto lo hereda de APP.js  línea 19 -  con el    ":productId"    el : es necesario y "productId" lo defino yo
+
     useEffect(() =>{
-        getProductsById().then((response) => {
-            setProducts(response);
+        getProductsById(productId).then((response) => {
+            setProduct(response);
         }).finally(() => {
             setLoading(false)
         });
@@ -18,16 +22,14 @@ const ItemDetailContainer = ({greeting}) => {     // este greeting lo tiene que 
     if(loading) {
         return (
             <div>
-                <h1>{greeting}</h1>
                 <Spinner />
             </div>
         )
     }
 
     return (
-        <div>
-            <h1>{greeting}</h1>
-            <ItemDetail products={products} />
+        <div className="ItemDetailContainer">
+            <ItemDetail {...product} />
         </div>
     )
 }

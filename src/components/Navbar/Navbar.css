@@ -1,6 +1,20 @@
-nav {
+Nav {
+    text-decoration: none;
     margin-bottom: 20px;
     font-family: 'Andale Mono', monospace;
-    color: darkslategray;
+    color: rgb(50, 50, 50);
     font-weight: bold;
+}
+
+.Option {
+    text-decoration: none;
+    margin: 0 50px;
+    font-family: 'Andale Mono', monospace;
+    color: rgb(50, 50, 50);
+}
+
+.ActiveOption {
+    text-decoration: underline;
+    margin: 0 50px;
+    color: rgb(0, 0, 0);
 }

@@ -4,3 +4,10 @@
     height: 400px;
     margin: 0 auto;
 }
+
+.Item {
+    border-width: 0;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+}

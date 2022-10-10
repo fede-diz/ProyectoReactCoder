@@ -1,19 +1,22 @@
 import './App.css';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Navbar from './components/Navbar/Navbar.js';
-import ItemCount from './components/ItemCount/ItemCount';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';         // se usa para routear la URL en cada "link-interno" de cada componente
 
-function App() {               // Dentro de las llaves {} de cada componente le paso propiedades con formato JavaScript: número, variable, 'un string', unaFuncion()
+function App() {                                                         // La estructura es   BrowserRouter > Routes > Route path='cada-path'
 
-  const handleOnAdd = () => {
-    alert('Se agregó al carrito')
-  }
-
-  return (                     // [un, array], {un:x, objeto:y, literal:z}, etc
+  return (
     <div className="App">
-      <Navbar />
-      <ItemListContainer greeting={'BIENVENIDOS AL HIMALAYA'}/>
-      <ItemCount stock={5} onAdd={handleOnAdd} />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting={'CATÁLOGO DE PRODUCTOS'}/>} />
+          <Route path='/type/:typeName' element={<ItemListContainer />} />
+          <Route path='/detail/:productId' element={<ItemDetailContainer />} />
+          <Route path='*' element={<h1>404 NOT FOUND</h1>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
