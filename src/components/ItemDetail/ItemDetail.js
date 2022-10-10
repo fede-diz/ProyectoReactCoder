@@ -1,12 +1,40 @@
-import Item from "../Item/Item"
+import ItemCount from "../ItemCount/ItemCount"
 import './ItemDetail.css'
 
-const ItemDetail = ({ products }) => {
+const ItemDetail = ({ id, name, price, category, img, stock, description }) => {
+
+    const handleOnAdd = (quantity) => {
+        const productToAdd = {
+            id, name, price, quantity
+        }
+        console.log(productToAdd)
+    }
 
     return (
-        <div className="row row-cols-1 row-cols-md-3 g-4 container-sm">
-            {products.map((prod) => <Item key={prod.id} {...prod}/>)}
-        </div>
+        <article className="CardItem">
+            <header className="Header">
+                <h1 className="ItemHeader">
+                    {name}
+                </h1>
+            </header>
+            <picture>
+                <img src={img} alt={name} className="ItemImg" />
+            </picture>
+            <section>
+                <p className="Info">
+                    Categoría: {category}
+                </p>
+                <p className="Info">
+                    Descripción: {description}
+                </p>
+                <p className="Info">
+                    Precio: {price}
+                </p>
+            </section>
+            <footer className="ItemFooter">
+                <ItemCount onAdd={handleOnAdd} stock={stock} />
+            </footer>
+        </article>
     )
 }
 
