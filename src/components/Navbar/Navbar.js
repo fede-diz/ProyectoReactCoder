@@ -7,9 +7,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
-                <Link to={'/'}>
-                    <h4 className="navbar-brand">Diz ClotheZ</h4>
-                </Link>
+                <Link to={'/'} className="brand">Diz ClotheZ</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="btn-group me-auto mb-2 mb-lg-0" role="group" aria-label="Default button group">
                         <NavLink to={'type/Abrigos'} className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Abrigos</NavLink>

@@ -2,19 +2,37 @@ Nav {
     text-decoration: none;
     margin-bottom: 20px;
     font-family: 'Andale Mono', monospace;
+    font-size: larger;
     color: rgb(50, 50, 50);
     font-weight: bold;
 }
 
+.brand {
+    text-decoration: overline underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 6px;
+    letter-spacing: 2px;
+    font-family: 'Andale Mono', monospace;
+    color: rgb(50, 50, 50);
+    font-weight: bold;
+    text-shadow: 0 0 2px rgb(198, 215, 238), 0 0 5px rgb(194, 189, 189);
+    font-size: x-large;
+    margin-block-end: 3px;
+    margin-left: 20px;
+    margin-right: 50px;
+}
+
 .Option {
     text-decoration: none;
-    margin: 0 50px;
+    margin: 0 30px;
     font-family: 'Andale Mono', monospace;
     color: rgb(50, 50, 50);
 }
 
 .ActiveOption {
     text-decoration: underline;
-    margin: 0 50px;
+    margin: 0 30px;
+    font-family: 'Andale Mono', monospace;
     color: rgb(0, 0, 0);
+    text-transform: uppercase;
 }
