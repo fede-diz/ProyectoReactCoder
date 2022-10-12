@@ -5,13 +5,15 @@
 }
 
 .ItemHeader {
-    display: flex;
     justify-content: center;
+    padding-bottom: 20px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
 }
 
 .Info {
     font-size: 20px;
-    display: flex;
     justify-content: space-around;
 }
 
@@ -21,7 +23,6 @@
     font-size: 18px;
     border-radius: 8px;
     flex: none;
-    display: flex;
     order: 1;
     align-self: center;
     flex-grow: 0;
@@ -39,4 +40,8 @@
     height: 550px;
     object-fit: cover;
     object-position: center;
+}
+
+.row {
+    padding-top: 40px;
 }

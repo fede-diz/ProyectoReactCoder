@@ -27,6 +27,7 @@
     cursor: pointer;
     outline: inherit;
     font-size: larger;
+    min-width: 60px;
 }
 
 .Number {
