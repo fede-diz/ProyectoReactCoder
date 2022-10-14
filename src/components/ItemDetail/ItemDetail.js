@@ -1,20 +1,17 @@
-import { useState } from "react"
-import AddedToCart from "../AddedToCart/AddedToCart"
 import ItemCount from "../ItemCount/ItemCount"
 import './ItemDetail.css'
+import { useContext } from "react"
+import { CartContext } from "../../context/CartContext"
 
 const ItemDetail = ({ id, name, price, category, img, stock, description }) => {
-    const [toCart, setToCart] = useState(true)
 
-    const [productAdded, setProductAdded] = useState({})
+    const { addItem } = useContext(CartContext)
 
     const handleOnAdd = (quantity) => {
         const productToAdd = {
             id, name, price, quantity
         }
-        console.log(productToAdd)
-        setProductAdded(productToAdd)
-        setToCart(false)
+        addItem(productToAdd)
     }
 
     return (
@@ -40,7 +37,7 @@ const ItemDetail = ({ id, name, price, category, img, stock, description }) => {
                     <p className="Info">
                         <strong>Precio:</strong> $ {price}
                     </p>
-                    {toCart === true ? <ItemCount onAdd={handleOnAdd} stock={stock} /> : <AddedToCart {...productAdded}/>}
+                    <ItemCount onAdd={handleOnAdd} stock={stock} />
                 </div>
             </div>
         </div>
