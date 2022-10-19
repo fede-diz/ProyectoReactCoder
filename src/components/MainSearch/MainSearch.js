@@ -1,20 +1,22 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import './MainSearch.css'
+import { NotificationContext } from "../../notification/NotificationService"
 
 const MainSearch = () => {
     const [input, setInput] = useState()
     // const [products, setProducts] = useState([])              impacto en líneas 14 y 22
+    const { setNotification } = useContext(NotificationContext)
 
     const handleSearch = () => {
         // Agregar un loader? por el retraso?
-        fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${input}`).then((response) => {
+        fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${input}`).then((response) => {    //Tendría que hacer esta búsqueda reall
             return response.json()
         }).then((resp) => {
             console.log(resp.results);
             // setProducts(resp.results);
         })
         .catch((error) => {
-            console.log(error);
+            setNotification('error', 'No se pudo encontrar el producto')
         })
     }
     

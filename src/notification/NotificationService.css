@@ -1,0 +1,25 @@
+.greenNotification {
+    position:absolute;
+    top: 100px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    font-family: 'Andale Mono', monospace;
+    background-color: green
+}
+
+.redNotification {
+    position:absolute;
+    top: 100px;
+    right: 10px;
+    width: auto;
+    height: auto;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    font-family: 'Andale Mono', monospace;
+    background-color: red
+}
