@@ -7,7 +7,7 @@ import { NotificationContext } from "../../notification/NotificationService"
 
 const ItemDetail = ({ id, name, price, category, img, stock, description }) => {
 
-    const { addItem, isInCart } = useContext(CartContext)
+    const { addItem, isInCart, getProductQuantity } = useContext(CartContext)
     const { setNotification } = useContext(NotificationContext)
 
     const handleOnAdd = (quantity) => {
@@ -15,8 +15,14 @@ const ItemDetail = ({ id, name, price, category, img, stock, description }) => {
             id, name, price, quantity
         }
         addItem(productToAdd)
-        setNotification('success', `Agregaste ${quantity} ${name}`)
+        if (!isInCart(id)) {
+            setNotification('success', `Agregaste ${quantity} ${name} al carrito`)
+        } else {
+            setNotification('update', `Modificaste la cantidad de ${name} a ${quantity}`)
+        }
     }
+
+    const quantityAdded = getProductQuantity(id)
 
     return (
         <div className="CardItem container text-center">
@@ -42,11 +48,11 @@ const ItemDetail = ({ id, name, price, category, img, stock, description }) => {
                         <strong>Precio:</strong> $ {price}
                     </p>
                     <div>
-                        {
-                            !isInCart(id)
-                                ? <ItemCount onAdd={handleOnAdd} stock={stock} /> 
-                                : <Link to='/cart' className="btn btn-outline-secondary btn-sm">Finalizar Compra</Link>
-                        }
+                        { stock !== 0 
+                            ? <ItemCount id='ending' onAdd={handleOnAdd} stock={stock} initial={quantityAdded} /> 
+                            : <h4>Producto Sin Stock</h4> }
+                        { isInCart(id) && <Link to='/cart' id='ending' className="btn btn-outline-secondary btn-sm">Finalizar Compra</Link> }
+
                     </div>
                 </div>
             </div>

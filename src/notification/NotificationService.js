@@ -3,10 +3,15 @@ import './NotificationService.css'
 
 const Notification = ({ severity, message }) => {
 
-    if (message === '') return             // Esto me devuelve "nada", entonces cuando el mensaje está vacío (que es también el default de useState) no devuelve componente
+    if (message === '') return
 
     return (
-        <div className={ severity === 'success' ? 'greenNotification' : 'redNotification'}>
+        <div className=
+            { severity !== 'success' 
+                ? severity === 'update'
+                    ? 'update' 
+                    : 'redNotification'
+                : 'greenNotification' }>
             {message}
         </div>
     )
@@ -29,7 +34,7 @@ export const NotificationProvider = ({children}) => {
     }
 
     return (
-        <NotificationContext.Provider value={{ setNotification }}>     {/* el value (que es "setNotification") es lo que estoy mandando a todo lo que está dentro del provider */}
+        <NotificationContext.Provider value={{ setNotification }}>
             <Notification severity={severity} message={message}/>
             {children}
         </NotificationContext.Provider>
