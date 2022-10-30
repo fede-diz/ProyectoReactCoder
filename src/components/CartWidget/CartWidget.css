@@ -2,10 +2,13 @@
     width: auto;
     padding: 4px 10px 4px 10px;
     flex: none;
+    position: absolute;
+    right: 5px;
 }
 
 .carritoLogo {
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .CartWidget:hover {

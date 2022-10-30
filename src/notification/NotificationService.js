@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 import './NotificationService.css'
 
 const Notification = ({ severity, message }) => {
@@ -16,7 +16,6 @@ const Notification = ({ severity, message }) => {
         </div>
     )
 }
-
 
 export const NotificationContext = createContext()
 
@@ -39,4 +38,8 @@ export const NotificationProvider = ({children}) => {
             {children}
         </NotificationContext.Provider>
     )
+}
+
+export const useNotification = () => {
+    return useContext(NotificationContext)
 }

@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB-SKXQ9jlK7yV8V2fDaS-cHfivl6TRXZ4",
-  authDomain: "proyectocoderreact.firebaseapp.com",
-  projectId: "proyectocoderreact",
-  storageBucket: "proyectocoderreact.appspot.com",
-  messagingSenderId: "771948927538",
-  appId: "1:771948927538:web:c5d33479634f65c777fa2b"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.RREACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);

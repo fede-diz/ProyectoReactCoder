@@ -1,34 +1,19 @@
-import { useState, useEffect } from "react";
-import ItemDetail from "../ItemDetail/ItemDetail"
 import './ItemDetailContainer.css'
+import ItemDetail from "../ItemDetail/ItemDetail"
 import Spinner from "../Spinner/Spinner";
 import { useParams } from 'react-router-dom';
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../services/firebase";
+import { getProduct } from "../../services/firebase/firestore/product";
+import { useAsync } from "../../hooks/useAsync";
+import { useNotification } from "../../notification/NotificationService";
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState({})
-    const [loading, setLoading] = useState(true)
+    const { setNotification } = useNotification()
 
     const { productId } = useParams()
 
-    useEffect(() => {
-        document.title = `Detalle de ${product.name}`
-    }, [product])
+    const getSelectedProduct = () => getProduct(productId)
 
-    useEffect(() =>{
-        setLoading(true)
-
-        const docRef = doc(db, 'products', productId)
-
-        getDoc(docRef).then((response) => {
-            const data = response.data()
-            const productAdapted = { id: response.id, ...data }
-            setProduct(productAdapted)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }, [productId])
+    const { data: product, error, loading } = useAsync(getSelectedProduct, [productId])
 
     if(loading) {
         return (
@@ -36,6 +21,12 @@ const ItemDetailContainer = () => {
                 <Spinner />
             </div>
         )
+    } else {
+        document.title = `Detalle de ${product.name}`
+    }
+
+    if (error) {
+        return setNotification('error', 'Hubo un error, por favor refrescá la página')
     }
 
     return (
